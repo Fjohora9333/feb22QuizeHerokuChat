@@ -28,7 +28,9 @@ app.post("/sms", (req, res) =>{
         sResponse += "</Message>";
     }
     res.end(sResponse + "</Response>");
-
+    if (oGames[sFrom].done()){
+        delete oGames[sFrom];
+    }
 });
 
 var port = process.env.PORT || parseInt(process.argv.pop()) || 3000;
